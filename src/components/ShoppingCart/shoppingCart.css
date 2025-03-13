@@ -1,0 +1,368 @@
+.main-shopping-cart{
+    display: flex;
+    gap: 10px;
+    align-items: start;
+    margin-top: 15px;
+}
+.cart-count{
+    margin-top: 15px;
+}
+
+.shopping-cart {
+    width: 100%;
+    max-width: 800px;
+    
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-item-image {
+    padding: 10px;
+    background-color: #f7f5f5;
+    border-radius: 5px;
+    margin-right: 15px;
+    border: 1px solid lightgray;
+  }
+  .cart-item-image img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+    border-radius: 5px;
+  }
+  
+  .cart-item-details {
+    flex-grow: 1;
+  }
+  
+  .cart-item-details h4 {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .cart-item-details p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #8b8b8b;
+  }
+  
+  .seller {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .cart-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  
+  .remove-btn,
+  .save-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 4px;
+  }
+  
+  .remove-btn {
+    color:  #ff4d4d;;
+    
+  }
+  
+  .save-btn {
+   
+    color: #0044cc;
+  }
+  
+ 
+  
+  .cart-item-price strong {
+    display: block;
+    font-size: 14px;
+    color: #4b4b4b;
+  }
+  
+  .quantity {
+    margin-top: 5px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #ccc;
+  }
+  
+  .cart-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .back-btn,
+  .remove-all-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .back-btn {
+    background: #007bff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: white;
+  }
+  
+  .remove-all-btn {
+    background-color: white;
+    border: 1px solid lightgray;
+    color: #0044cc;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .checkout-summary {
+    width: 100%;
+    max-width: 300px;
+    
+    background: #fff;
+    border-radius: 10px;
+    
+  }
+  
+  .coupon-section {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+  }
+  
+  .coupon-section label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #222222;
+  }
+  
+  .coupon-input {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .coupon-input input {
+    width: 70%;
+    padding: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+  
+  .coupon-input button {
+    width: 30%;
+    
+    background-color: white;
+    color: #007bff;
+    border: none;
+    padding: 8px 12px;
+    border-left: 1px solid lightgray;
+    cursor: pointer;
+  }
+  
+  .summary-box {
+    padding: 15px;
+    border-radius: 8px;
+    background: white;
+    border: 1px solid lightgray;
+  }
+  
+  .summary-box p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    color: #4b4b4b;
+    margin: 8px 0;
+  }
+  
+  .summary-box .discount span {
+    color: red;
+  }
+  .discount{
+    background-color: white;
+ 
+    padding: 0;
+  }
+  
+  .summary-box .tax span {
+    color: green;
+  }
+  
+  .summary-box .total {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background: #00b300;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .payment-icons img {
+    width: 30px;
+    height: auto;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 8px;
+    height:30px;
+    justify-content: space-between;
+}
+
+.quantity-controls button {
+    background: none;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 18px;
+ 
+    transition: all 0.2s ease-in-out;
+}
+
+.quantity-controls button:hover {
+    color: #000;
+}
+
+.quantity-controls span {
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+  .cart-content-box{
+    display: flex;
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .main-shopping-cart {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .shopping-cart {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .cart-item-image {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .cart-item-details h4 {
+        font-size: 13px;
+    }
+
+    .cart-item-details p {
+        font-size: 12px;
+    }
+
+    .cart-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .cart-item-price {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .quantity {
+        width: 60px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .checkout-summary {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .summary-box p {
+        font-size: 14px;
+    }
+
+    .checkout-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .save-btn,.remove-btn{
+      display: none;
+    }
+    
+}

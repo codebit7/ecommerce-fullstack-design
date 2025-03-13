@@ -1,0 +1,133 @@
+
+.request-quote-container {
+    position: relative;
+    display: flex;
+    
+    justify-content: space-between;
+    background: url("./../../assets/Form/file/req.jpg") center/cover no-repeat;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 40px 20px;
+    min-height: 300px;
+    position: relative;
+    margin-top: 15px;
+  }
+  
+ 
+  .request-quote-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #2d7ff1ab 30%, #389ab28d 70%);
+    z-index: 1;
+  }
+  
+
+  .quote-text {
+    width: 50%;
+    color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .quote-text h2 {
+    font-size: 30px;
+    font-weight: bold;
+    
+  }
+  
+  .quote-text p {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+ 
+  .quote-form {
+    width: 38%;
+    background: #ffffff; 
+    padding: 20px;
+    border-radius: 5px;
+  
+    position: relative;
+    z-index: 2;
+  }
+  
+
+  .quote-form input,
+  .quote-form textarea,
+  .quote-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 18px;
+    border: 1px solid #dee2e7;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .quote-form textarea {
+    resize: none;
+    height: 60px;
+  }
+  
+  
+  .input-group {
+    display: flex;
+    width: 70%;
+    gap: 10px;
+    
+  }
+  
+  .input-group input {
+    
+    flex: 1;
+  }
+  
+  .input-group select {
+   
+    flex: 1;
+  }
+  
+ 
+  .quote-form button {
+   
+    background-color: #0d6efd;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .quote-form button:hover {
+    background-color: #0056b3;
+  }
+  
+
+
+  @media (max-width: 480px){
+   
+
+    .quote-text p{
+      display:none ;
+    }
+
+    .quote-text h2{
+      font-size: 18px;
+    }
+
+    .quote-form button{
+      position: absolute;
+      bottom: 30%;
+      left: 10%;
+    }
+
+
+    .quote-form{
+      display: none;
+
+    }
+
+  }

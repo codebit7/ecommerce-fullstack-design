@@ -1,0 +1,136 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  column-gap: 15px;
+  row-gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+ 
+}
+
+.p-card {
+
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  background: white;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  
+}
+
+.p-card:hover {
+  transform: scale(1.03);
+}
+
+.product-image-container {
+
+  height: 240px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid lightgrey;
+  
+}
+
+.product-image-container img {
+  width: 80%;
+  height: 100%;
+
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.price-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-pricing {
+  display: flex;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: grey;
+  font-size: 14px;
+  margin-left: 8px;
+}
+
+.product-rating {
+  font-size: 14px;
+  color: #f39c12;
+}
+
+.rating-value {
+  font-weight: bold;
+}
+
+.reviews {
+  color: grey;
+  font-size: 12px;
+}
+
+.grid-product-title {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.wishlist-icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color: #0D6EFD;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 20px;
+  transition: color 0.2s;
+}
+
+.wishlist-icon:hover {
+  color: red;
+}
+
+@media (max-width: 740px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    width: 100%;
+  }
+  
+  .product-image-container {
+    height: 200px; 
+  }
+  
+  .product-image-container img {
+    height: 100%; 
+    width: auto; 
+    max-width: 100%; 
+    object-fit: contain; 
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    width: 100%;
+  }
+  
+  .product-image-container {
+    height: 140px; 
+  }
+  
+  .product-image-container img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+}

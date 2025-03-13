@@ -1,0 +1,38 @@
+.discount-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(65deg, #2583ff 70%, #0055d4 30%);
+    padding: 25px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: white;
+    font-family: Arial, sans-serif;
+  }
+  
+  .discount-text h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .discount-text p {
+    font-size: 12px;
+    margin: 5px 0 0;
+    opacity: 0.8;
+  }
+  
+  .discount-button button {
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .discount-button button:hover {
+    background-color: #e68900;
+  }
+  

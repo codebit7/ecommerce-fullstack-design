@@ -1,0 +1,29 @@
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.container{
+    width: 85%;
+    margin: 0 auto;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  body{
+    /* background-color: #f0f2f4; */
+  }
+
+
+  @media (max-width:780px){
+    .container{
+      width: 95%;
+    }
+  }

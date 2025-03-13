@@ -1,0 +1,133 @@
+.recommendation-container {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid lightgray;
+
+}
+
+.recommendation-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recommendation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recommendation-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+.recommendation-item:hover {
+  background: #f9f9f9;
+}
+
+.recommendation-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid lightgray;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.recommendation-info {
+  flex-grow: 1;
+  min-width: 0; 
+  text-align: left;
+}
+
+.recommendation-name {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  word-wrap: break-word;
+  white-space: normal; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recommendation-price {
+  font-size: 13px;
+  color: #8a8a8a;
+  margin: 3px 0 0;
+}
+
+
+
+
+@media (max-width: 740px) {
+  .recommendation-title{
+    font-size: 18px;
+  
+  }
+  .recommendation-container {
+      width: 100%;
+      overflow-x: auto;
+  }
+
+  .recommendation-list {
+      display: flex;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 10px;
+      scrollbar-width: none; 
+      -ms-overflow-style: none;
+  }
+
+  .recommendation-list::-webkit-scrollbar {
+      display: none;
+  }
+
+  .recommendation-item {
+      flex-direction: column;
+      flex: 1;
+      text-align: center;
+      min-width: 140px;
+      max-width: 150px;
+      padding: 8px;
+      gap: 5px;
+  }
+
+  .recommendation-image img {
+     mix-blend-mode: multiply;
+      width: 100%;
+      /* height: auto; */
+     
+      object-fit: contain; 
+  }
+
+  .recommendation-image{
+    width: 100%;
+    height: auto;
+    border: none;
+    padding: 8px;
+    background-color: #efefef;
+  }
+
+  .recommendation-info {
+      width: 100%;
+      
+  }
+
+  .recommendation-name {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+      word-wrap: break-word;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+}

@@ -1,0 +1,140 @@
+:root {
+  --light-blue: #e3f0ff;
+  --primary-blue: #0d6efd;
+  --text-grey: #606770;
+  --background-grey: #f2f3f5;
+  --white: #ffffff;
+  --light-grey: #dee2e7;
+}
+
+.deals-offers-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  border: 1px solid var(--light-grey);
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+}
+
+.deals-info {
+  width: 25%;
+  padding: 15px;
+  border-right: 1px solid var(--light-grey);
+}
+
+.deals-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.deals-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.countdown {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.time-box {
+  background: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  min-width: 50px;
+}
+
+.time-box span {
+  display: block;
+  font-weight: bold;
+}
+
+.deals-items {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.deals-items::-webkit-scrollbar {
+  display: none;
+}
+
+.deal-item {
+  text-align: center;
+  padding: 10px;
+  border-left: 1px solid var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+  flex: 1;
+}
+
+.deal-item img {
+  width: 60%;
+  height: auto;
+}
+
+.deal-item p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.deals-discount {
+  background-color: #fed1c6;
+  padding: 5px 10px;
+  color: #ff4d4d;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .deals-offers-container {
+    flex-direction: column;
+    align-items: stretch;
+    border: none;
+    width: 100vw;
+  }
+
+  .deals-info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: none;
+
+    border-bottom: 1px solid var(--light-grey);
+    padding: 15px;
+  }
+
+  .deals-items {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    
+  }
+
+  .deal-item {
+    text-align: center;
+    min-width: 140px;
+    height: 160px;
+    flex: 0 0 auto;
+    border: 1px solid lightgray;
+    
+  }
+
+  .deal-item img{
+    width: 80%;
+    height: 60%;
+  }
+}

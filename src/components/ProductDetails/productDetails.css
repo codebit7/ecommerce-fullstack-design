@@ -1,0 +1,406 @@
+.product-detail-container {
+    display: flex;
+    gap: 20px;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid lightgray;
+    /* max-width: 100%; */
+    flex-wrap: wrap;
+    margin: auto;
+  }
+  
+  .product-image-section {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .main-product-image {
+    width: 100%;
+    height: auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+  }
+  
+  .thumbnail-images {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .thumbnail-images img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .product-info-section {
+    /* flex: 1; */
+    width: 40%;
+  }
+  
+  .stock-status {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .product-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .rating-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .star-icon {
+    color: #f39c12;
+    margin-right: 5px;
+  }
+  
+  .pricing-section {
+    display: flex;
+    background-color: #fff0df;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  .price-box:not(:nth-child(1)){
+    border-left: 1px solid lightgray;
+  }
+  
+  .price-box {
+
+    display: flex;
+    flex-direction: column;
+    padding: 5px 10px;
+    width: 30%;
+    text-align: center;
+  }
+  
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+  }
+  
+  .pcs {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .additional-info p {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .supplier-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .text-content{
+    display: flex;
+    margin-bottom:5px ;
+    
+    align-items: center;
+  }
+  .text-content p{
+    width: 40%;
+    color: #747474;
+   
+  }
+  .text-content span{
+    
+    width: 60%;
+    color: #212121;
+  }
+  
+  .supplier-box {
+   border: 1px solid lightgray;
+    padding: 15px;
+    border-radius: 5px;
+    /* text-align: center; */
+    width: 100%;
+  }
+  
+  .supplier-info {
+    display: flex;
+    gap: 10px;
+    /* align-items: center; */
+  }
+
+  .supplier-header{
+    display: flex;
+    gap: 8px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+  }
+  .header-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+  }
+  
+  .supplier-icon {
+    background: skyblue;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+  
+  .supplier-name {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .company-name {
+    font-weight: bold;
+  }
+  
+  .location,
+  .verification,
+  .shipping {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+
+ 
+
+  .location img{
+    width: 25px;
+    
+  }
+  
+  .inquiry-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .profile-btn {
+    background: white;
+    border: 1px solid lightgray;
+    padding: 8px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  
+  .save-later {
+    font-size: 14px;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .reviews{
+    font-size: 16px;
+  }
+
+
+
+  @media (max-width: 780px) {
+   
+}
+
+
+  @media (max-width: 780px) {
+    .product-detail-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .product-image-section {
+        width: 100%;
+        position: relative;
+    }
+
+    .main-product-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .product-info-section {
+        width: 100%;
+    }
+
+    .rating-section {
+        display: flex;
+        justify-content: start;
+        font-size: 14px;
+        color: #777;
+        gap: 5px;
+    }
+
+    .pricing-section {
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .price-box {
+        width: auto;
+        border: none;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #d9534f;
+    }
+
+    .pcs {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .inquiry-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .supplier-box {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        border-radius: 10px;
+        padding: 10px;
+        background: #f9f9f9;
+    }
+
+    .supplier-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .supplier-info {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .supplier-name {
+        font-weight: bold;
+    }
+
+    .location, .verification, .shipping {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .profile-btn {
+        font-size: 14px;
+    }
+}
+
+
+@media(max-width:480px){
+  .supplier-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    width: 100%;
+}
+
+.supplier-icon {
+    background: #d1f2f2;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.supplier-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.supplier-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 5px;
+}
+
+.company-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.supplier-name {
+    font-size: 12px;
+    color: #777;
+}
+
+.supplier-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.supplier-badges img {
+    width: 18px;
+    height: auto;
+}
+
+.supplier-detail{
+  display: flex;
+  gap: 8px;
+  
+}
+
+
+
+
+
+}

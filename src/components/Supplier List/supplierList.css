@@ -1,0 +1,43 @@
+.suppliers {
+    margin: 20px auto;
+  }
+  
+  .suppliers h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .suppliers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    margin-top: 5px;
+    gap: 25px;
+  }
+  
+  .supplier-item {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    gap: 10px;
+  }
+  
+  .flag {
+    width: 25%;
+    height: 80%;
+  }
+  
+  .supplier-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .country {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .domain {
+    font-size: 12px;
+    color: gray;
+  }
+  

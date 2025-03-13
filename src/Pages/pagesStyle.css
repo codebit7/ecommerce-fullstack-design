@@ -1,0 +1,36 @@
+.product-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+   
+    
+    
+}
+
+.products-section{
+    
+    display: flex;
+    flex-direction: column;
+   
+
+}
+
+.extraInfo{
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+    margin-top: 20px;
+}
+
+
+ @media(max-width: 740px){
+    .products-section{
+        width: 100%;
+    }
+
+    .extraInfo{
+        flex-direction: column;
+    }
+
+} 

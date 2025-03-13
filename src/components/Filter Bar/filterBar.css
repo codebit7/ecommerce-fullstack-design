@@ -1,0 +1,118 @@
+.filter-bar {
+    display: flex;
+   justify-content: space-between;
+   align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    
+  }
+  
+  .item-count {
+    font-size: 14px;
+    color: #374151;
+  }
+  
+  .filter-options {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .verified-only {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #374151;
+    cursor: pointer;
+  }
+  
+  .verified-only input {
+    display: none;
+  }
+  
+  .verified-only .checkmark {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border: 2px solid #2563eb;
+    border-radius: 4px;
+    margin-right: 6px;
+    position: relative;
+  }
+  
+  .verified-only input:checked + .checkmark {
+    background-color: #2563eb;
+    border-color: #2563eb;
+  }
+  
+  .verified-only input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .sort-dropdown {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .view-toggle {
+    display: flex;
+    gap: 4px;
+  }
+  
+  .verified-checkbox{
+    display: flex;
+    gap: 8px;
+  }
+  .view-btn {
+    background: none;
+    border: 1px solid #e5e7eb;
+    padding: 6px 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #6b7280;
+    transition: 0.3s;
+  }
+  
+  .view-btn.active,
+  .view-btn:hover {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+  
+
+  @media (max-width: 740px) {
+    .item-count {
+      display: none;
+    }
+  
+    .filter-bar {
+      gap: 12px;
+      padding: 12px;
+      justify-content: center;
+      align-items: start;
+    }
+  
+    .filter-options {
+      justify-content: space-between;
+      flex: 1;
+      gap: 10px;
+    }
+    
+  }
+  

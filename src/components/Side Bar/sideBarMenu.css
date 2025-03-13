@@ -1,0 +1,113 @@
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10000;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  }
+  
+  .sidebar-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+ 
+  .sidebar {
+    width: 200px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    
+    position: relative;
+  }
+  
+ 
+  .sidebar-header {
+    display: flex;
+    flex-direction: column;
+   
+    justify-content: space-between;
+    padding-bottom: 10px;
+    gap: 15px;
+    border-bottom: 1px solid #ddd;
+    background-color: azure;
+    padding: 15px;
+    position: relative;
+  }
+  
+  .user-icon {
+    width: 35px;
+    height: 35px;
+    background: lightgray;
+    border-radius: 50%;
+  }
+  
+  .sidebar-header span {
+    flex: 1;
+
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+ 
+  .sidebar-menu {
+    list-style: none;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+    
+  }
+  
+  .sidebar-menu li {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .sidebar-menu li svg {
+    margin-right: 10px;
+    color: #555;
+  }
+  
+  .sidebar-menu li:hover {
+    color: #007bff;
+  }
+  
+  
+  .sidebar-footer {
+    list-style: none;
+    padding: 10px 20px 0 30px;
+ 
+    font-size: 14px;
+    color: #666;
+    
+    
+  }
+  
+  .sidebar-footer li {
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar-footer li:hover {
+    color: #007bff;
+  }
+  

@@ -1,0 +1,56 @@
+.topnav {
+   
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    
+  }
+  
+
+  .topnav-left,
+  .topnav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+  }
+  
+  .topnav-menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .topnav-item {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .topnav-item:hover {
+    color: #007bff;
+  }
+  
+  .topnav-arrow-icon {
+    font-size: 12px;
+    margin-left: 5px;
+    color: #888;
+  }
+  
+  .topnav-flag-icon {
+    width: 20px;
+    height: 14px;
+    margin-left: 5px;
+  }
+  
+
+  @media (max-width:880px){
+    .topnav-right{
+      display: none;
+    }
+  }
+
+  @media (max-width:480px){
+    .topnav{
+      display: none;
+    }
+  }
