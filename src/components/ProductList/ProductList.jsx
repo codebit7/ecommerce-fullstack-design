@@ -9,25 +9,25 @@ const ProductList = ({products}) => {
     <div className="product-list">
       {products.map((product) => (
 
-        <div className="product-card" key={product.id}>
-          <img src={product.image} alt={product.title} className="product-image" />
+        <div className="list-product-card" key={product.id}>
+          <img src={product.image} alt={product.title} className="list-product-image" />
 
-          <div className="product-details">
+          <div className="list-product-details">
             <div className="headerbox">
-            <h3 className="product-title">{product.title}</h3>
+            <h3 className="list-product-title">{product.title}</h3>
             <span className="wishList-icon"><FaRegHeart className="wishlist-icon" /></span>
             </div>
-            <div className="product-pricing">
-              <span className="price">{product.price}</span>
+            <div className="list-product-pricing">
+              <span className="list-price">{product.price}</span>
               {product.originalPrice && (
-                <span className="original-price">{product.originalPrice}</span>
+                <span className="list-original-price">{product.originalPrice}</span>
               )}
             </div>
-            <div className="product-rating">
-              ⭐⭐⭐⭐⭐ <span className="rating-score">{product.rating}</span> • {product.orders} orders{" "}
-              {product.freeShipping && <span className="free-shipping">• Free Shipping</span>}
+            <div className="list-product-rating">
+              ⭐⭐⭐⭐⭐ <span className="list-rating-score">{product.rating}</span> • {product.orders} orders{" "}
+              {product.freeShipping && <span className="list-free-shipping">• Free Shipping</span>}
             </div>
-            <p className="product-description">{product.description}</p>
+            <p className="list-product-description">{product.description}</p>
             <a href="#" className="view-details">
               View details
             </a>

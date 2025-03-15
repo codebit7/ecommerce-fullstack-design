@@ -19,12 +19,12 @@ export function App() {
             <TopNav />
 
             
-            <Router>
-                <HomePage path="/" />
-                <FilterPage path="/filter" />
-                <ProductDetailsPage path="/product" />
-                <CartPage path="/cart" />
-            </Router>
+            
+                {/* <HomePage path="/" /> */}
+                <FilterPage />
+                {/* <ProductDetailsPage path="/product" /> */}
+                {/* <CartPage path="/cart" /> */}
+           
 
             <Footer />
 

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./productFilters.css";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
-const ProductFilter = () => {
+const ProductFilter = ({handleFilters, filters}) => {
   const [openSections, setOpenSections] = useState({
     category: true,
     brands: true,
@@ -45,6 +45,10 @@ const ProductFilter = () => {
     }
   };
 
+
+ 
+
+  
   return (
     <div className="filter-sidebar">
      
@@ -55,10 +59,11 @@ const ProductFilter = () => {
         </div>
         {openSections.category && (
           <ul>
-            <li>Mobile accessory</li>
-            <li>Electronics</li>
-            <li>Smartphones</li>
-            <li>Modern tech</li>
+            {
+              ['All','Mobile accessory','Electronics','Smartphones','Modern tech'].map((item)=>(
+                <li key={item} onClick={()=>handleFilters('category',item)}>{item}</li>
+              ))
+            }
             <li className="see-all">See all</li>
           </ul>
         )}
@@ -73,11 +78,23 @@ const ProductFilter = () => {
         {openSections.brands && (
           <ul>
             {["Samsung", "Apple", "Huawei", "Poco", "Lenovo"].map((brand) => (
-              <li key={brand}>
-                <input type="checkbox" id={brand} />
-                <label htmlFor={brand}>{brand}</label>
-              </li>
-            ))}
+       <li key={brand}>
+        <input
+      type="checkbox"
+      checked={filters.brands.includes(brand)}
+      id={brand}
+      onChange={(e) => {
+        const updatedBrands = e.target.checked
+          ? [...filters.brands, brand]
+          : filters.brands.filter((b) => b !== brand);
+
+        handleFilters("brands", updatedBrands);
+      }}
+    />
+    <label htmlFor={brand}>{brand}</label>
+  </li>
+))}
+
             <li className="see-all">See all</li>
           </ul>
         )}
@@ -130,7 +147,7 @@ const ProductFilter = () => {
                 placeholder="Max"
               />
             </div>
-            <button className="apply-btn">Apply</button>
+            <button className="apply-btn" onClick={()=>handleFilters('priceRange',[minValue,maxValue])}>Apply</button>
           </div>
         )}
       </div>
@@ -145,7 +162,15 @@ const ProductFilter = () => {
           <div>
             {["Any", "Refurbished", "Brand-new", "Old items"].map((condition) => (
               <div key={condition}>
-                <input type="radio" name="condition" />
+                <input 
+                type="radio"
+                name="condition" 
+                value = {condition}
+                checked= {filters.condition == condition}
+                onChange ={()=>{
+                  handleFilters('condition',condition);
+                }}
+                 />
                 <label htmlFor={condition}>{condition}</label>
               </div>
             ))}
@@ -163,7 +188,11 @@ const ProductFilter = () => {
           <div>
             {[5, 4, 3, 2, 1].map((stars) => (
               <div key={stars} className="rating-item">
-                <input type="checkbox" id={`rating-${stars}`} />
+                <input type="checkbox"
+                 id={`rating-${stars}`}
+                 checked = {filters.rating === stars}
+                 onChange={()=>{handleFilters('rating',stars)}}
+                  />
                 <label htmlFor={`rating-${stars}`}>
                   {"★".repeat(stars)} {"☆".repeat(5 - stars)}
                 </label>

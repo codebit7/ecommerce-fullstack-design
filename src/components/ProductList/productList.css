@@ -2,23 +2,26 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 10px auto;
-  
+    margin: 5px  0 10px 0;
+    width: 100%;
+    min-height: 700px;
     font-family: Arial, sans-serif;
+    box-sizing: border-box;
   }
   
-  .product-card {
+  .list-product-card {
     display: flex;
-    align-items: flex-start;
+    
     gap: 16px;
-    padding: 16px;
+    padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;
     transition: 0.3s;
+   
   }
   
-  .product-card:hover {
+  .list-product-card:hover {
     box-shadow: 0px 2px 4px #7272721a;
   }
   
@@ -27,59 +30,59 @@
     align-items: center;
     justify-content: space-between;
   }
-  .product-image {
+  .list-product-image {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 6px;
   }
   
-  .product-details {
+  .list-product-details {
     flex: 1;
   }
   
-  .product-title {
+  .list-product-title {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   
-  .product-pricing {
+  .list-product-pricing {
     display: flex;
     align-items: center;
     gap: 8px;
   }
   
-  .price {
-    font-size: 18px;
+  .list-price {
+    font-size: 14px;
     font-weight: bold;
     color: #000;
   }
   
-  .original-price {
-    font-size: 14px;
+  .list-original-price {
+    font-size: 12px;
     color: #888;
     text-decoration: line-through;
   }
   
-  .product-rating {
-    font-size: 14px;
+  .list-product-rating {
+    font-size: 12px;
     color: #333;
     margin: 6px 0;
   }
   
-  .rating-score {
+  .list-rating-score {
     font-weight: bold;
     color: #f90;
     font-size: 15px;
   }
   
-  .free-shipping {
+  .list-free-shipping {
     color: #0a8f08;
     font-weight: bold;
   }
   
-  .product-description {
+  .list-product-description {
     font-size: 14px;
     color: #555;
     margin: 6px 0;
@@ -103,30 +106,30 @@
 
 
   @media(max-width:480px){
-    .product-card{
+    .list-product-card{
       gap: 2px;
     }
 
-    .product-rating{
+    .list-product-rating{
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 5px;
     }
 
-    .rating-score{
+    .list-rating-score{
       font-size: 14px;
 
     }
     
-    .product-image{
+    .list-product-image{
       width: 80px;
       height: 80px;
     }
-    .product-title{
+    .list-product-title{
       font-size: 13px;
     }
-    .product-description{
+    .list-product-description{
       display: none;
     }
   }

@@ -1,7 +1,7 @@
 .product-container{
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
    
     
     
@@ -11,8 +11,13 @@
     
     display: flex;
     flex-direction: column;
-   
+    min-width: 80%;
+}
 
+.products-container{
+    min-width: 100%;
+    min-height: 700px;
+    overflow-y: auto;
 }
 
 .extraInfo{

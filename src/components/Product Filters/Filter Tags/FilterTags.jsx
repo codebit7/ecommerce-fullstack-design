@@ -1,36 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./filterTags.css";
 import { IoMdClose } from "react-icons/io";
+import { CgClose } from "react-icons/cg";
 
-const FilterTags = () => {
-  const [filters, setFilters] = useState([
-    "Samsung",
-    "Apple",
-    "Poco",
-    "Metallic",
-    "4 star",
-    "3 star",
-  ]);
-
-  const removeFilter = (filter) => {
-    setFilters(filters.filter((item) => item !== filter));
-  };
-
+const FilterTags = ({tags,handleFilter}) => {
   
-  const clearAllFilters = () => {
-    setFilters([]);
-  };
-
   return (
     <div className="filter-tags">
-      {filters.map((filter, index) => (
+      {tags.map((filter, index) => (
         <div key={index} className="filter-tag">
             <span>{filter}</span>
-          
+            <span onClick={()=>handleFilter('brands',tags.filter(item=>item !== filter))}><CgClose/></span>
         </div>
       ))}
-      {filters.length > 0 && (
-        <button className="clear-all" onClick={clearAllFilters}>
+      {tags.length > 0 && (
+        <button className="clear-all" onClick={()=>handleFilter('brands',[])}>
           Clear all filter
         </button>
       )}
