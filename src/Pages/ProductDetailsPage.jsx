@@ -5,10 +5,14 @@ import ProductInfoTabs from './../components/ProductInfoTabs/ProductInforTabs'
 import RecommendationList from './../components/RecommendationList/RecommendationList'
 import RelatedProducts from './../components/RelatedProducts/RelatedProducts'
 import DiscountBanner from './../components/DiscountBanner/DiscountBanner'
+import NavBar from '../components/Header/NavBar'
+import TopNav from '../components/Header/TopNav'
+import Footer from '../components/Footer/Footer'
 
 const ProductDetailsPage = () => {
   return (
     <div>
+     
       <Path />
       <ProductDetail/>
       <div className="extraInfo container">
@@ -17,6 +21,7 @@ const ProductDetailsPage = () => {
       </div>
       <RelatedProducts/>
       <DiscountBanner/>
+      
     </div>
   )
 }

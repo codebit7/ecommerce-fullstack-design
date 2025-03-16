@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Pagination.css";
 
-const Pagination = ({ totalPages = 3, onPageChange }) => {
+const Pagination = ({ totalPages = 3, setSetting }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
+
+  
+  useEffect(() => {
+    setSetting({ limit: itemsPerPage, page: currentPage });
+  }, [itemsPerPage, currentPage, setSetting]);
 
   const changePage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      if (onPageChange) onPageChange(page, itemsPerPage);
     }
   };
 
   return (
     <div className="pagination-container">
-  
+      
       <div className="items-per-page">
         Show{" "}
         <select
@@ -30,7 +34,7 @@ const Pagination = ({ totalPages = 3, onPageChange }) => {
       
       <div className="pagination-buttons">
         <button
-          className={`pagination-btn ${currentPage === 1 ? "disabled" : ""}`}
+          className="pagination-btn"
           onClick={() => changePage(currentPage - 1)}
           disabled={currentPage === 1}
         >
@@ -48,7 +52,7 @@ const Pagination = ({ totalPages = 3, onPageChange }) => {
         ))}
 
         <button
-          className={`pagination-btn ${currentPage === totalPages ? "disabled" : ""}`}
+          className="pagination-btn"
           onClick={() => changePage(currentPage + 1)}
           disabled={currentPage === totalPages}
         >

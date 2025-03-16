@@ -3,20 +3,26 @@ import { IoIosArrowDown } from "react-icons/io";
 import './topNav.css'
 
 const TopNav = () => {
+
+  const topNavItems = [
+    { name: "All category" },
+    { name: "Hot offers" },
+    { name: "Gift boxes" },
+    { name: "Projects" },
+    { name: "Menu item" },
+    { name: "Help", icon: <IoIosArrowDown className="topnav-arrow-icon" /> }
+  ];
   return (
     
       <div className="topnav">
        <div className="container flex">
       <div className="topnav-left ">
-        <FaBars className="topnav-menu-icon" />
-        <span className="topnav-item">All category</span>
-        <span className="topnav-item">Hot offers</span>
-        <span className="topnav-item">Gift boxes</span>
-        <span className="topnav-item">Projects</span>
-        <span className="topnav-item">Menu item</span>
-        <span className="topnav-item">
-          Help <IoIosArrowDown className="topnav-arrow-icon" />
+      {/* <FaBars className="topnav-menu-icon" /> */}
+      {topNavItems.map((item, index) => (
+        <span key={index} className="topnav-item">
+          {item.name} {item.icon && item.icon}
         </span>
+      ))}
       </div>
       <div className="topnav-right">
         <span className="topnav-item">

@@ -17,8 +17,11 @@
     align-items: center;
   }
 
-  body{
-    /* background-color: #f0f2f4; */
+  .outlet-container{
+    width: 100%;
+    padding: 15px 0;
+    /* background-color: #f6f6f6; */
+
   }
 
 

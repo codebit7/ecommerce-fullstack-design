@@ -33,6 +33,9 @@ import CategoryBanner from './../components/CategoryBanner/CategoryBanner'
 
 import DealsOffer from './../components/DealsOffer/DealsOffer'
 import HomeOutdoor from './../components/HomeOutdoor/HomeOutdoor'
+import NavBar from '../components/Header/NavBar'
+import TopNav from '../components/Header/TopNav'
+import Footer from '../components/Footer/Footer'
 const HomePage = () => {
 
 
@@ -71,7 +74,9 @@ const HomePage = () => {
     
   return (
     <div>
-      <CategoryBanner/>
+
+     
+     <CategoryBanner/>
      <DealsOffer/>
      <HomeOutdoor products={Homeproducts} info ={homeCover}/>
      <HomeOutdoor products={Techproducts} info ={techCover}/>
@@ -80,6 +85,7 @@ const HomePage = () => {
      <ExtraServices/>
      <SuppliersList/>
      <JoinUs/>
+    
     </div>
   )
 }
