@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import pic1 from './../../assets/Image/tech/5.png'
 import pic2 from './../../assets/Image/tech/6.png'
 import pic3 from './../../assets/Image/tech/7.png'
@@ -6,6 +6,7 @@ import pic4 from './../../assets/Image/tech/8.png'
 import pic5 from './../../assets/Image/tech/3.png'
 
 import "./dealsOffer.css"; 
+import { useSelector } from "react-redux";
 
 const products = [
   { id: 1, name: "Smart watches", img: pic4, discount: "-25%" },
@@ -16,6 +17,32 @@ const products = [
 ];
 
 const DealsOffer = () => {
+
+
+  const token = useSelector((state)=> state.auth.token);
+  const [dealsProducts, setDealsProducts] = useState([]);
+
+  useEffect(()=>{
+    const fetchProducts =async()=>{
+      try {
+        const response = await fetch('http://localhost:3000/api/productDeals', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+            },
+            });
+      const data = await response.json();
+      setDealsProducts(data);
+    }
+    catch (error) {
+      console.error(error);
+      }
+    }
+
+
+   fetchProducts();
+  },[token]);
   return (
     <div className="deals-offers-container container">
       
@@ -36,11 +63,11 @@ const DealsOffer = () => {
 
      
       <div className="deals-items">
-        {products.map((product) => (
+        {dealsProducts.map((product) => (
           <div key={product.id} className="deal-item">
             <img src={product.img} alt={product.name} />
             <p>{product.name}</p>
-            <div className="deals-discount">{product.discount}</div>
+            <div className="deals-discount">{(product.discount/product.price)*100}%</div>
           </div>
         ))}
       </div>

@@ -13,7 +13,7 @@ const ProductList = ({products}) => {
       return acc + currentStar;
       },0);
 
-    let rating = sum/products.length || 1;
+    const rating = sum/products[index].ratings.length || 1;
     return rating;
 
   }
@@ -22,7 +22,7 @@ const ProductList = ({products}) => {
       {products.map((product, index) => (
 
         <div className="list-product-card" key={product.id}>
-          <img src={product.image} alt={product.name} className="list-product-image" />
+          <img src={product.images[0].url} alt={product.name} className="list-product-image" />
 
           <div className="list-product-details">
             <div className="headerbox">

@@ -10,7 +10,7 @@ const ProductGrid = ({products}) => {
     {products.map((product) => (
       <div className="p-card">
       <div className="product-image-container">
-        <img src={product.image} alt={product.title} className="product-image" />
+        <img src={product.images[0].url} alt={product.title} className="product-image" />
       </div>
 
       <div className="product-info">

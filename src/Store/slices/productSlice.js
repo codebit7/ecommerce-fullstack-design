@@ -2,18 +2,33 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+export const fetchProducts = createAsyncThunk(
+  'products/fetchProducts',
+  async ({ page = 1, limit = 10 }, { rejectWithValue, getState }) => {
+    try {
+      const token = getState().auth.token;  
 
-export const fetchProducts = createAsyncThunk('products/fetchProducts', 
-    async ({ page = 1, limit = 10 },{ rejectWithValue }) => {
-        try {
-            const response = await axios.get(`http://localhost:3000/api/v1/users/products?page=${page}&limit=${limit}`);
-            return response.data;
-            
-        } catch (error) {
-            return rejectWithValue(error.response?.data?.message || 'Failed to fetch products');
+      if (!token) {
+        return rejectWithValue("No authentication token found");
+      }
+
+      const response = await axios.get(
+        `http://localhost:3000/api/v1/users/products?page=${page}&limit=${limit}`,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
         }
+      );
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Failed to fetch products');
     }
-  )
+  }
+);
+
 
 
 const productSlice = createSlice({
