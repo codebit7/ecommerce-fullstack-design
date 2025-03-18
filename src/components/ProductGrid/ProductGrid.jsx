@@ -16,7 +16,9 @@ const ProductGrid = ({products}) => {
       <div className="product-info">
         <div className="price-section">
         <div className="product-pricing">
+
           <span className="price">${product.price.toFixed(2)}</span>
+          
           <span className="old-price">${product.oldPrice.toFixed(2)}</span>
         </div>
         <span className="wishList-icon"><FaRegHeart className="wishlist-icon" /></span>

@@ -5,10 +5,10 @@ import { FaRegHeart } from "react-icons/fa";
 
 
 const ProductList = ({products}) => {
+  
 
   const calculateRating = (index)=>{
     
-
     let sum = products[index].ratings.reduce((acc,currentStar)=>{
       return acc + currentStar;
       },0);
