@@ -77,7 +77,7 @@ const RecommendationList = () => {
         {
         recommendations.map((item) => (
 
-          <li key={item.id} className="recommendation-item">
+          <li  className="recommendation-item">
 
              <div className="recommendation-image">
             <img src={item.image} alt={item.title} className="" />

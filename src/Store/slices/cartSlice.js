@@ -3,14 +3,15 @@ import axios from "axios";
 
 
 const BASE_URL ="http://localhost:3000/api/v1";
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MGQyMTM3Y2Q3NDA3OTBmNmUxZjQyMSIsImVtYWlsIjoiYXNmYXJAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQyNDA3MDY2LCJleHAiOjE3NDI0OTM0NjZ9.qldTUdFprolEFmieYkSDD_K7M38V38NqIOgRE-CBxAc'
 
 export const addCartItem = createAsyncThunk(
   "cart/addCartItem",
   async (cartData, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
+      // const token = getState().auth.token;
       const res = await axios.post(
-        `${BASE_URL}/users/cart/add`,
+        `${BASE_URL}/cart/add`,
         cartData,
         {
           headers: {
@@ -30,9 +31,9 @@ export const deleteCartItem = createAsyncThunk(
   "cart/deleteCartItem",
   async (productId, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
+      // const token = getState().auth.token;
       const res = await axios.delete(
-        `${BASE_URL}/users/cart/delete/${productId}`,
+        `${BASE_URL}/cart/delete/${productId}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -52,9 +53,9 @@ export const updateCartItem = createAsyncThunk(
   "cart/updateCartItem",
   async ({ productId, quantity }, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
+      // const token = getState().auth.token;
       const res = await axios.put(
-        `${BASE_URL}/users/cart/update/${productId}`,
+        `${BASE_URL}/cart/update/${productId}`,
         { quantity },
         {
           headers: {
@@ -75,12 +76,13 @@ export const getCartItems = createAsyncThunk(
   "cart/getCartItems",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
-      const res = await axios.get(`${BASE_URL}/users/cart/`, {
+      // const token = getState().auth.token;
+      const res = await axios.get(`${BASE_URL}/cart/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      
       return res.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Failed to fetch cart items");
@@ -93,9 +95,9 @@ export const clearCart = createAsyncThunk(
   "cart/clearCart",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
+      // const token = getState().auth.token;
       const res = await axios.post(
-        `${BASE_URL}/users/cart/clear`,
+        `${BASE_URL}/cart/clear`,
         {},
         {
           headers: {

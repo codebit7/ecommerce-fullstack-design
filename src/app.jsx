@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { Router, Route } from "preact-router";
+import Router from "preact-router";
 import "./app.css";
 import NavBar from "./components/Header/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -18,16 +18,20 @@ export function App() {
             <NavBar setMenuOpen={setMenuOpen} />
             <TopNav />
 
+           
             <Router>
-                <Route path="/" component={HomePage} />
-                <Route path="/filter" component={FilterPage} />
-                <Route path="/product/:id" component={ProductDetailsPage} />
-                <Route path="/cart" component={CartPage} />
+                <HomePage path="/" />
+                <FilterPage path="/filter" />
+                <ProductDetailsPage path="/product/:id" />
+                <CartPage path="/cart" />
             </Router>
 
             <Footer />
 
+           
             {menuOpen && <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />}
         </>
     );
 }
+
+export default App;

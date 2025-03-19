@@ -13,23 +13,26 @@ import img1 from './../../assets/Image/interior/1.png'
 
 import { MdOutlineVerifiedUser } from "react-icons/md";
 import { TbWorld } from "react-icons/tb";
+import { calculateRating } from "../ProductList/ProductList";
+import { calculateReviews } from "../ProductGrid/ProductGrid";
 
-const ProductDetail = () => {
+const ProductDetail = ({product}) => {
   return (
     <div className="product-detail-container container">
       
 
       <div className="product-image-section">
         <img
-          src={img1} 
+          src={product.images[0]?.url || img1} 
           alt="Product"
           className="main-product-image"
         />
         <div className="thumbnail-images">
-          <img src={img1} alt="Thumbnail" />
-          <img src={img1} alt="Thumbnail" />
-          <img src={img1} alt="Thumbnail" />
-          <img src={img1} alt="Thumbnail" />
+          {
+            product.images.slice(1).map((img)=>{
+                  return <img src={img || img1} alt="Thumbnail" />
+            })
+          }
         </div>
       </div>
 
@@ -37,27 +40,27 @@ const ProductDetail = () => {
       <div className="product-info-section">
         <p className="stock-status">✔ In stock</p>
         <h2 className="product-title">
-          Mens Long Sleeve T-shirt Cotton Base Layer Slim Muscle
+         {product.description}
         </h2>
         <div className="rating-section">
-        ⭐⭐⭐⭐⭐ <span className="rating">9.3 .</span>
+        ⭐⭐⭐⭐⭐ <span className="rating">{calculateRating(product)} .</span>
 
-          <span className="reviews"><MdMessage/>  32 reviews</span>
+          <span className="reviews"><MdMessage/>{calculateReviews(product)} reviews</span>
           <span className="sold"><RiVipCrown2Line/> 154 sold</span>
         </div>
 
        
         <div className="pricing-section">
           <div className="price-box">
-            <span className="price">$98.00</span>
+            <span className="price">${product.price}</span>
             <span className="pcs">50-100 pcs</span>
           </div>
           <div className="price-box">
-            <span className="price">$90.00</span>
+            <span className="price">${product.price*5}</span>
             <span className="pcs">100-700 pcs</span>
           </div>
           <div className="price-box">
-            <span className="price">$78.00</span>
+            <span className="price">${product.price*7}</span>
             <span className="pcs">700+ pcs</span>
           </div>
         </div>

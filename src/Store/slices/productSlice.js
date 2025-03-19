@@ -8,16 +8,17 @@ export const fetchProducts = createAsyncThunk(
     try {
       const token = getState().auth.token;  
 
-      if (!token) {
-        return rejectWithValue("No authentication token found");
-      }
+
+      // if (!token) {
+      //   return rejectWithValue("No authentication token found");
+      // }
 
       const response = await axios.get(
-        `http://localhost:3000/api/v1/users/products?page=${page}&limit=${limit}`,
+        `http://localhost:3000/api/v1/products?page=${page}&limit=${limit}`,
         {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            
           }
         }
       );
@@ -38,9 +39,22 @@ const productSlice = createSlice({
         loading: false,
         error: null,
         totalPage:1,
-        totalProducts:0
+        totalProducts:0,
+        filters: {
+          category: "All",
+          priceRange: [0, 7000],
+          rating: 0,
+          search: "",
+          condition: "Any",
+          brands: [],
+          featured: "Featured",
+        },
+
         },
         reducers: {
+          updateFilter:(state, action)=>{
+            state.filters[action.payload.key] = action.payload.value;
+          }
            
         },
         extraReducers:(builder)=>{
@@ -62,5 +76,5 @@ const productSlice = createSlice({
         }
 })
 
-
+export const { updateFilter } = productSlice.actions;
 export default productSlice.reducer;

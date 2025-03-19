@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ShoppingCart.css";
 import img1 from "./../../assets/Image/tech/1.png";
 import img2 from "./../../assets/Image/tech/2.png";
 import img3 from "./../../assets/Image/tech/3.png";
 import { FaArrowLeft, FaMinus, FaPlus } from "react-icons/fa";
-
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, deleteCartItem, getCartItems, updateCartItem } from "../../Store/slices/cartSlice";
+import placeholder  from './../../assets/Form/file/placeholder-image.jpg'
 
 const initialCartItems = [
   {
@@ -43,59 +45,88 @@ const initialCartItems = [
 ];
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  
+  const cart = useSelector((state)=>state.cart ?? {items:[], total:0});
+  console.log("Cart: ");
+  
   const [coupon, setCoupon] = useState("");
+  const [tax, setTax] =useState(0);
+  const [discount, setDiscount] =useState(0);
+  const dispatch = useDispatch();
 
-  const updateQuantity = (id, newQuantity) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: Math.max(1, newQuantity) } : item
-      )
-    );
+  const temData ={
+    size: "Medium",
+    color: "Blue",
+    material: "Plastic",
+    seller: "Artel Market",
+  }
+   
+
+
+ 
+
+  const updateQuantity = (productId, quantity) => {
+     console.log(productId);
+     
+       dispatch(updateCartItem({productId, quantity}));
   };
 
   
   const removeItem = (id) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+   dispatch(deleteCartItem(id))
   };
 
   
   const removeAll = () => {
-    setCartItems([]);
+    dispatch(clearCart())
   };
 
+  const calculateTotal = ()=>{
+     
+    setDiscount(cart.total*(5/100));
+    const taxRate = 10;
+    const discountedTotal = cart.total -discount;
+    setTax(discountedTotal *(taxRate/100))
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const discount = 60.0; 
-  const tax = 14.0; 
-  const total = subtotal - discount + tax;
+    return discountedTotal + tax;
+  }
+
+
+
+
+
+  useEffect(() => {
+    if (cart.items.length === 0) {
+      dispatch(getCartItems());
+    }
+  }, [dispatch, cart.items.length]);
 
   return (
     <>
-      <h3 className="container cart-count">My Cart ({cartItems.length})</h3>
+      <h3 className="container cart-count">My Cart ({cart.items.length})</h3>
       <div className="main-shopping-cart container">
         
         <div className="shopping-cart">
-          {cartItems.length > 0 ? (
-            cartItems.map((item) => (
-              <div key={item.id} className="cart-item">
+          {cart.items.length > 0 ? (
+            cart.items.map((item) => (
+              <div key={item.product._id} className="cart-item">
                 
                 <div className="cart-content-box">
                 <div className="cart-item-image">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.product.image || placeholder} alt={item.product.name} />
                 </div>
 
                 
                 <div className="cart-item-details">
-                  <h4>{item.title}</h4>
+                  <h4>{item.product.name}</h4>
                   <p>
-                    <span>Size: {item.size}, </span>
-                    <span>Color: {item.color}, </span>
-                    <span>Material: {item.material}</span>
+                    <span>Size: {item.product?.size ||temData.size}, </span>
+                    <span>Color: {item.product?.color || temData.color}, </span>
+                    <span>Material: {item.product?.material || temData.material}</span>
                   </p>
-                  <p className="seller">Seller: {item.seller}</p>
+                  <p className="seller">Seller: {item.product?.seller || temData.seller}</p>
                   <div className="cart-buttons">
-                    <button className="remove-btn" onClick={() => removeItem(item.id)}>
+                    <button className="remove-btn" onClick={() => removeItem(item.product._id)}>
                       Remove
                     </button>
                     <button className="save-btn">Save for later</button>
@@ -105,13 +136,13 @@ const ShoppingCart = () => {
                 </div>
                
                 <div className="cart-item-price">
-                  <strong>${item.price.toFixed(2)}</strong>
+                  <strong>${item.product.price.toFixed(2)}</strong>
                   <div className="quantity-controls">
-                    <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>
+                    <button onClick={() => updateQuantity(item.product._id, item.quantity - 1)}>
                       <FaMinus />
                     </button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>
+                    <button onClick={() => updateQuantity(item.product._id, item.quantity + 1)}>
                       <FaPlus />
                     </button>
                   </div>
@@ -127,7 +158,7 @@ const ShoppingCart = () => {
             <button className="back-btn">
               <FaArrowLeft /> Back to shop
             </button>
-            {cartItems.length > 0 && (
+            {cart.items.length > 0 && (
               <button className="remove-all-btn" onClick={removeAll}>
                 Remove all
               </button>
@@ -153,11 +184,11 @@ const ShoppingCart = () => {
 
           
           <div className="summary-box">
-            <p>Subtotal: <span>${subtotal.toFixed(2)}</span></p>
+            <p>Subtotal: <span>${cart.total.toFixed(2)}</span></p>
             <p className="discount">Discount: <span>- ${discount.toFixed(2)}</span></p>
-            <p className="tax">Tax: <span>+ ${tax.toFixed(2)}</span></p>
+            <p className="tax">Tax: <span> + ${tax.toFixed(2)}</span></p>
             <p className="total">
-              <strong>Total:</strong> <strong>${total.toFixed(2)}</strong>
+              <strong>Total:</strong> <strong>${calculateTotal().toFixed(2)}</strong>
             </p>
 
             

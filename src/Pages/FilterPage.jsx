@@ -140,29 +140,17 @@ const FilterPage = () => {
    const [layoutToggle, setLayoutToggle] = useState(false);
 
    const dispatch = useDispatch();
-   const { products, totalProducts,totalPage } = useSelector((state) => state.products);
-
+   const { products,totalPage ,filters} = useSelector((state) => state.products);
 
    const [pagenationSetting, setPaginationSetting] = useState({
       limit:10,
       page:1
    });
-   
-   const [filters, setFilters] = useState({
-     category:"All",
-     priceRange:[0,7000],
-     rating:0,
-     search:"",
-     condition:"Any",
-     brands:[],
-     Featured:"Featured",
-   });
    const [filteredProduct,setFilteredProduct] = useState(products);
 
    useEffect(() => {
     const applyFilters = () => {
-      
-
+    
       const filtered = products.filter((product) => 
         (filters.category !=="All" ? product.category === filters.category : true) &&
         (filters.priceRange ? product.price >= filters.priceRange[0] && product.price <= filters.priceRange[1] : true) &&
@@ -179,25 +167,9 @@ const FilterPage = () => {
   }, [filters,products]);
   
 
-
-
   useEffect(()=>{
     dispatch(fetchProducts(pagenationSetting));
-  },[pagenationSetting,dispatch])
-
-
-
-   
-   const handleFilterChange =(key, value)=>{
-        setFilters((prevFilters)=>{
-          return {...prevFilters, [key]:value};
-        })
-   }
-
-
-
-
-   
+  },[filters,pagenationSetting,dispatch])
 
   return (
     <>
@@ -207,24 +179,11 @@ const FilterPage = () => {
     <div className="container">
       
       <div className="product-container">
-        <ProductFilter
-           handleFilters= {handleFilterChange}
-           filters={filters}
-           />
+        <ProductFilter />
         <div className="products-section">
       
-          <FilterBar
-           totalItems={totalProducts}
-           filters={filters} 
-           setLayoutToggle={setLayoutToggle}
-           handleFilter={handleFilterChange}
-
-          />
-
-          <FilterTags
-            tags={filters.brands}
-            handleFilter={handleFilterChange} 
-            />
+          <FilterBar setLayoutToggle={setLayoutToggle}/>
+          <FilterTags />
 
           <div className="products-container">
           {

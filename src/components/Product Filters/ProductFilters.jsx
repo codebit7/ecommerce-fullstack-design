@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./productFilters.css";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilter } from "../../Store/slices/productSlice";
 
-const ProductFilter = ({handleFilters, filters}) => {
+const ProductFilter = () => {
   const [openSections, setOpenSections] = useState({
     category: true,
     brands: true,
@@ -11,9 +13,13 @@ const ProductFilter = ({handleFilters, filters}) => {
     condition: true,
     ratings: true,
   });
-
+  
   const [minValue, setMinValue] = useState(300);
   const [maxValue, setMaxValue] = useState(7000);
+
+  const {filters} = useSelector((state)=>state.products)
+  const dispatch = useDispatch();
+ 
 
   const toggleSection = (section) => {
     setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
@@ -61,7 +67,7 @@ const ProductFilter = ({handleFilters, filters}) => {
           <ul>
             {
               ['All','Mobile accessory','Electronics','Smartphones','Modern tech'].map((item)=>(
-                <li key={item} onClick={()=>handleFilters('category',item)}>{item}</li>
+                <li key={item} onClick={() => dispatch(updateFilter({ key: "category", value: item }))}>{item}</li>
               ))
             }
             <li className="see-all">See all</li>
@@ -88,7 +94,7 @@ const ProductFilter = ({handleFilters, filters}) => {
           ? [...filters.brands, brand]
           : filters.brands.filter((b) => b !== brand);
 
-        handleFilters("brands", updatedBrands);
+          dispatch(updateFilter({ key: "brands", value: updatedBrands }))
       }}
     />
     <label htmlFor={brand}>{brand}</label>
@@ -147,7 +153,7 @@ const ProductFilter = ({handleFilters, filters}) => {
                 placeholder="Max"
               />
             </div>
-            <button className="apply-btn" onClick={()=>handleFilters('priceRange',[minValue,maxValue])}>Apply</button>
+            <button className="apply-btn" onClick={() => dispatch(updateFilter({ key: "priceRange", value: [minValue, maxValue] }))}>Apply</button>
           </div>
         )}
       </div>
@@ -168,7 +174,7 @@ const ProductFilter = ({handleFilters, filters}) => {
                 value = {condition}
                 checked= {filters.condition == condition}
                 onChange ={()=>{
-                  handleFilters('condition',condition);
+                  dispatch(updateFilter({key:'conditon', value:condition}));
                 }}
                  />
                 <label htmlFor={condition}>{condition}</label>
@@ -191,7 +197,7 @@ const ProductFilter = ({handleFilters, filters}) => {
                 <input type="checkbox"
                  id={`rating-${stars}`}
                  checked = {filters.rating === stars}
-                 onChange={()=>{handleFilters('rating',stars)}}
+                 onChange={()=> dispatch(updateFilter({key: 'rating',value: stars}))}
                   />
                 <label htmlFor={`rating-${stars}`}>
                   {"★".repeat(stars)} {"☆".repeat(5 - stars)}
