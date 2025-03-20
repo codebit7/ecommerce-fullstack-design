@@ -10,22 +10,36 @@ import TopNav from '../components/Header/TopNav'
 import Footer from '../components/Footer/Footer'
 import { useLocation, useParams } from 'react-router-dom'
 
-const ProductDetailsPage = (props) => {
+export const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MGQyMTM3Y2Q3NDA3OTBmNmUxZjQyMSIsImVtYWlsIjoiYXNmYXJAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzQyNDA3MDY2LCJleHAiOjE3NDI0OTM0NjZ9.qldTUdFprolEFmieYkSDD_K7M38V38NqIOgRE-CBxAc';
 
-    const [ product ,setProduct] = useState();
+const ProductDetailsPage = ({id}) => {
 
+    const [ product ,setProduct] = useState({});
+    console.log("Id : ", id);
+    
 
    useEffect(()=>{
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/v1/product/${id}`);
-        const data = await response.json();
-        setProduct(data);
+        const response = await fetch(`http://localhost:3000/api/v1/product/${id}`,
+          {
+            method: 'GET',
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const p = await response.json();
+        setProduct(p.data);
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
-   },[props.id])
+    fetchProduct(); 
+   },[id])
+
+   console.log("new Product",product);
    
   return (
     <div>

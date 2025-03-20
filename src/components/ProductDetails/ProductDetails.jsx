@@ -17,19 +17,24 @@ import { calculateRating } from "../ProductList/ProductList";
 import { calculateReviews } from "../ProductGrid/ProductGrid";
 
 const ProductDetail = ({product}) => {
+
+ console.log("my Product: ", product);
+ 
+  
   return (
     <div className="product-detail-container container">
       
 
       <div className="product-image-section">
         <img
-          src={product.images[0]?.url || img1} 
+          src={product.images.length>0 ?product.images[0].url : img1} 
           alt="Product"
           className="main-product-image"
         />
         <div className="thumbnail-images">
           {
-            product.images.slice(1).map((img)=>{
+          
+            product.images?.slice(1).map((img)=>{
                   return <img src={img || img1} alt="Thumbnail" />
             })
           }

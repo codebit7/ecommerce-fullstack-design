@@ -17,18 +17,13 @@ export function App() {
         <>
             <NavBar setMenuOpen={setMenuOpen} />
             <TopNav />
-
-           
             <Router>
                 <HomePage path="/" />
                 <FilterPage path="/filter" />
                 <ProductDetailsPage path="/product/:id" />
                 <CartPage path="/cart" />
             </Router>
-
             <Footer />
-
-           
             {menuOpen && <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />}
         </>
     );

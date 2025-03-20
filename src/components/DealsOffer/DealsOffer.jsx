@@ -16,30 +16,33 @@ const products = [
   { id: 5, name: "Canon cameras", img: pic5, discount: "-25%" },
 ];
 
+import { token } from "../../Pages/ProductDetailsPage";
+
+
+
 const DealsOffer = () => {
 
 
-  const token = useSelector((state)=> state.auth.token);
+  // const token = useSelector((state)=> state.auth.token);
   const [dealsProducts, setDealsProducts] = useState([]);
 
   useEffect(()=>{
     const fetchProducts =async()=>{
       try {
-        const response = await fetch('http://localhost:3000/api/productDeals', {
+        const response = await fetch('http://localhost:3000/api/v1/productDeals', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
             },
             });
-      const data = await response.json();
-      setDealsProducts(data);
+      const p = await response.json();
+      setDealsProducts(p.data);
     }
     catch (error) {
       console.error(error);
       }
     }
-
 
    fetchProducts();
   },[token]);
@@ -65,9 +68,9 @@ const DealsOffer = () => {
       <div className="deals-items">
         {dealsProducts.map((product) => (
           <div key={product.id} className="deal-item">
-            <img src={product.img} alt={product.name} />
+            <img src={product.img  || pic1} alt={product.name} />
             <p>{product.name}</p>
-            <div className="deals-discount">{(product.discount/product.price)*100}%</div>
+            <div className="deals-discount">{((product.discount/product.price)*100).toFixed(2)}%</div>
           </div>
         ))}
       </div>
