@@ -9,11 +9,6 @@ const initialState = {
     error: null,
   };
 
-  const credentials ={
-   username: 'admin',
-   password: 'admin123',
-  }
-
   
   export const loginRequest = createAsyncThunk('auth/login', 
     async (credentials, { rejectWithValue }) => {

@@ -1,32 +1,42 @@
 import { useState } from "preact/hooks";
-import Router from "preact-router";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./app.css";
-import NavBar from "./components/Header/NavBar";
-import Footer from "./components/Footer/Footer";
-import TopNav from "./components/Header/TopNav";
+import SidebarMenu from "./components/Side Bar/SideBarMenu";
+import AuthenticationPage from "./Pages/AuthenticationPage";
+import HomeLayout from "./Pages/HomeLayout";
 import HomePage from "./Pages/HomePage";
 import FilterPage from "./Pages/FilterPage";
 import ProductDetailsPage from "./Pages/ProductDetailsPage";
 import CartPage from "./Pages/CartPage";
-import SidebarMenu from "./components/Side Bar/SideBarMenu";
+import Login from "./components/Auth/Login";
+import SignUp from "./components/Auth/SignUp";
+import Protect from "./components/Auth/Protect";
 
 export function App() {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    return (
-        <>
-            <NavBar setMenuOpen={setMenuOpen} />
-            <TopNav />
-            <Router>
-                <HomePage path="/" />
-                <FilterPage path="/filter" />
-                <ProductDetailsPage path="/product/:id" />
-                <CartPage path="/cart" />
-            </Router>
-            <Footer />
-            {menuOpen && <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />}
-        </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route path="/auth" element={<AuthenticationPage />}>
+          <Route index element={<Navigate to="/auth/login" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+        </Route>
+
+        <Route element={<Protect requiredRole="user" />}>
+          <Route path="/" element={<HomeLayout setMenuOpen={setMenuOpen} />}>
+            <Route index element={<HomePage />} />
+            <Route path="filter" element={<FilterPage />} />
+            <Route path="product/:id" element={<ProductDetailsPage />} />
+            <Route path="cart" element={<CartPage />} />
+          </Route>
+        </Route>
+      </Routes>
+
+      {menuOpen && <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />}
+    </>
+  );
 }
 
 export default App;
