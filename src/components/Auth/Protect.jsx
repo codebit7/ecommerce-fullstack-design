@@ -1,19 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { Navigate, Outlet } from 'react-router-dom'
+import { Navigate, Outlet } from "react-router-dom";
 
 const Protect = ({ requiredRole }) => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth)
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  if (!isAuthenticated || !user) {
-    return <Navigate to='/auth/login' replace />
+  if (!user) {
+    return <Navigate to="/auth/login" replace />;
   }
 
-  if (requiredRole && user.role !== requiredRole) {
-    return <Navigate to='/unauthorized' replace />
+  if (user.role !== requiredRole) {
+    return <Navigate to={user.role === "admin" && window.location.pathname.startsWith("/admin") ? "/admin" : "/"} replace />;
   }
+  
 
-  return <Outlet />
-}
+  return <Outlet />;
+};
 
-export default Protect
+export default Protect;

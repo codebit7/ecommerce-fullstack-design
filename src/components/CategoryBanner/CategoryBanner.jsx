@@ -47,8 +47,8 @@ const CategoryBanner = () => {
       </div>
 
       
-      <div className="user-box">
-        <div className="user-card card">
+      <div className="my-user-box">
+        <div className="user-card ">
           <div className="userBox">
             <img src={profile} alt="User" className="user-image" />
             <p className="user-text">Hi, user <br /> let's get stated</p>
@@ -56,8 +56,8 @@ const CategoryBanner = () => {
           <button className="join-btn">Join now</button>
           <button className="login-btn">Log in</button>
         </div>
-        <div className="offer-card card">Get US $10 off<br /> with a new <br /> supplier</div>
-        <div className="quote-card card">Send quotes with <br />supplier <br /> preferences</div>
+        <div className="offer-card ">Get US $10 off<br /> with a new <br /> supplier</div>
+        <div className="quote-card ">Send quotes with <br />supplier <br /> preferences</div>
       </div>
     </div>
   );

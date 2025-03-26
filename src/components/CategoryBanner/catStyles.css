@@ -15,8 +15,9 @@
   border: 1px solid var(--light-grey);
   padding: 15px;
   gap: 8px;
+  overflow: hidden;
   border-radius: 8px;
-  height: 340px;
+  height: 370px;
 }
 
 
@@ -94,12 +95,12 @@
 }
 
 
-.user-box {
+.my-user-box {
   display: flex;
   flex: 1;
   flex-direction: column;
   width: 18%;
-  gap: 10px;
+  gap: 5px;
 }
 
 .user-card {
@@ -156,7 +157,7 @@
   background: #f97316;
   color: var(--white);
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 8px;
  
   font-weight: bold;
@@ -168,7 +169,6 @@
   padding: 10px;
   border-radius: 8px;
   font-size: 14px;
- 
   font-weight: bold;
 }
 

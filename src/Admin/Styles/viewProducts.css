@@ -1,0 +1,159 @@
+.view-product-container {
+  width: 95%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.top-header h4 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.add_btn {
+  background: #007bff;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+  text-align: center;
+}
+
+.add_btn:hover {
+  background: #0056b3;
+}
+
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.products-header div,
+.product-item div {
+  flex: 1;
+  text-align: center;
+}
+
+
+.products-list {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  transition: 0.3s ease;
+}
+
+.product-item:hover {
+  background: #dadada;
+}
+
+
+.product-img {
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+}
+
+.product-img img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+
+.product-name,
+.product-price,
+.product-stock,
+.product-category,
+.product-rating {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #f39c12;
+}
+
+
+.actions {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.actions button {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.actions .btn-light {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.actions .btn-warning {
+  background: #ffc107;
+  color: #fff;
+}
+
+.actions .btn-danger {
+  background: #dc3545;
+  color: #fff;
+}
+
+
+@media (max-width: 768px) {
+  .products-header,
+  .product-item {
+    flex-wrap: wrap;
+    font-size: 12px;
+  }
+
+  .product-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

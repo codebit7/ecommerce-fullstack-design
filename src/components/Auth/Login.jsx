@@ -12,13 +12,14 @@ const Login = () => {
     const navigate = useNavigate();
     
     const dispatch = useDispatch();
-    const { loading, isAuthenticated, error } = useSelector((state) => state.auth);
+    const { loading, isAuthenticated, error, user } = useSelector((state) => state.auth);
 
     useEffect(() => {
-        if (isAuthenticated) {
-            navigate("/");
+        if (isAuthenticated && user) {
+            localStorage.setItem("user", JSON.stringify(user)); 
+            navigate(user.role === "admin" ? "/admin" : "/"); 
         }
-    }, [isAuthenticated, navigate]);
+    }, [isAuthenticated, user, navigate]);
 
     const validateForm = () => {
         let valid = true;
@@ -50,7 +51,8 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (!validateForm()) return;
-        dispatch(loginRequest(formData));
+
+        dispatch(loginRequest(formData)); 
     };
 
     return (
@@ -78,7 +80,7 @@ const Login = () => {
 
             {error && <p className="error-text">{error}</p>}
 
-            <button className="submit-btn" onClick={handleLogin}>
+            <button className="submit-btn" onClick={handleLogin} disabled={loading}>
                 Login {loading && <AiOutlineLoading3Quarters />}
             </button>
 

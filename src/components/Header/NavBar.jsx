@@ -41,27 +41,27 @@ const NavBar = ({ setMenuOpen }) => {
   };
 
   return (
-    <div className="navbar">
+    <div className="user-navbar">
       <div className="container flex">
-        <button className="menu-btn" onClick={() => setMenuOpen((prev) => !prev)}>
+        <button className="user-menu-btn" onClick={() => setMenuOpen((prev) => !prev)}>
           <FaBars />
         </button>
 
-        <div className="navbar_logo">
+        <div className="user-navbar_logo">
           <img src={logo} alt="website logo" onClick={() => navigate("/filter")} />
         </div>
 
-        <div className={`searchbar ${searchOpen ? "active" : ""}`}>
+        <div className={`user-searchbar ${searchOpen ? "user-active" : ""}`}>
           <input
             type="text"
             placeholder="Search for products, brands and more"
             onChange={(e) => setInput(e.target.value)}
           />
 
-          <div className="cateList" onClick={() => setDropdownOpen(!dropdownOpen)}>
+          <div className="user-cateList" onClick={() => setDropdownOpen(!dropdownOpen)}>
             {selectedCategory} &#9660;
             {dropdownOpen && (
-              <ul className="dropdown">
+              <ul className="user-dropdown">
                 {categories.map((category, index) => (
                   <li
                     key={index}
@@ -78,16 +78,16 @@ const NavBar = ({ setMenuOpen }) => {
             )}
           </div>
 
-          <button className="searchBtn" onClick={handleSearch}>
+          <button className="user-searchBtn" onClick={handleSearch}>
             Search
           </button>
         </div>
 
-        <div className="navbar_items">
+        <div className="user-navbar_items">
           {navItems.map((item, index) => (
-            <Link key={index} to={item.link} className="navbar_item">
-              <div className="nav_icon">{item.icon}</div>
-              <div className="nav_link">{item.name}</div>
+            <Link key={index} to={item.link} className="user-navbar_item">
+              <div className="user-nav_icon">{item.icon}</div>
+              <div className="user-nav_link">{item.name}</div>
             </Link>
           ))}
         </div>
