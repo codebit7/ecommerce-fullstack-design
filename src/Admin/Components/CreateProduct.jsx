@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { createProduct, fetchCategories } from "../../Store/slices/productSlice";
+import { useParams } from "react-router-dom";
 import "./../Styles/createProducts.css";
-import { fetchCategories } from "../../Store/slices/productSlice";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
-  const { categories, loading } = useSelector((state) => state.products);
+  const { categories, loading, products } = useSelector((state) => state.products);
+  const { id } = useParams();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,6 +23,16 @@ const CreateProduct = () => {
 
   const [imagePreviews, setImagePreviews] = useState([]);
 
+
+  useEffect(() => {
+    if (id && id !== null) {
+      const product = products.find((p) => p._id === id);
+      if (product) {
+        setFormData(product);
+      }
+    }
+  }, [id, products]);
+
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
@@ -30,16 +41,18 @@ const CreateProduct = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+ 
   const handleFileChange = useCallback((e) => {
     const files = Array.from(e.target.files);
     if (files.length > 5) {
       alert("You can upload a maximum of 5 images.");
       return;
     }
+
     const previews = files.map((file) => URL.createObjectURL(file));
     setFormData((prev) => ({ ...prev, images: files }));
     setImagePreviews(previews);
-  }, []);
+  }, [setFormData, setImagePreviews]);
 
   const removeImage = (index) => {
     const updatedPreviews = imagePreviews.filter((_, i) => i !== index);
@@ -53,6 +66,10 @@ const CreateProduct = () => {
     if (formData.images.length > 5) {
       alert("You can upload a maximum of 5 images.");
       return;
+    }
+
+    if(id && id !==null){
+      dispatch(updateProduct({id, formData}))
     }
     dispatch(createProduct(formData));
     setFormData({
@@ -71,8 +88,8 @@ const CreateProduct = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Create Product</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <h2>{id ? "Edit Product" : "Create Product"}</h2>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Product Name</label>
           <input type="text" className="form-control" name="name" value={formData.name} onChange={handleChange} required />
@@ -113,23 +130,13 @@ const CreateProduct = () => {
         </div>
 
         <div className="mb-3">
-          <label className="form-label">Condition</label>
-          <select className="form-select" name="condition" value={formData.condition} onChange={handleChange}>
-            <option value="Any">Any</option>
-            <option value="New">Brand new</option>
-            <option value="Old Items">Old items</option>
-            <option value="Refurbished">Refurbished</option>
-          </select>
-        </div>
-
-        <div className="mb-3">
           <label className="form-label">Stock</label>
           <input type="number" className="form-control" name="stock" value={formData.stock} onChange={handleChange} required />
         </div>
 
         <div className="mb-3">
           <label className="form-label">Upload Images (Max: 5)</label>
-          <input type="file" className="form-control" multiple accept="image/*" onChange={handleFileChange} required />
+          <input type="file" className="form-control" multiple accept="image/*" onChange={handleFileChange} />
         </div>
 
         <div className="mb-3 d-flex flex-wrap">
@@ -142,7 +149,7 @@ const CreateProduct = () => {
         </div>
 
         <button type="submit" className="btn btn-primary" disabled={loading}>
-          {loading ? "Creating..." : "Create Product"}
+          {loading ? "Saving..." : id ? "Update Product" : "Create Product"}
         </button>
       </form>
     </div>

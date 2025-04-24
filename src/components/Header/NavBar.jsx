@@ -2,8 +2,8 @@ import { useState } from "preact/hooks";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "./../../assets/Brand/logo-colored.png";
 import { FaCartShopping, FaUser, FaBars } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
+import { FaHeart, FaJediOrder } from "react-icons/fa";
+import { MdFavorite, MdMessage } from "react-icons/md";
 import "./navStyle.css";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilter } from "../../Store/slices/productSlice";
@@ -29,8 +29,8 @@ const NavBar = ({ setMenuOpen }) => {
 
   const navItems = [
     { name: "Profile", icon: <FaUser />, link: "/profile" },
-    { name: "Message", icon: <MdMessage />, link: "/messages" },
-    { name: "Orders", icon: <FaHeart />, link: "/orders" },
+    { name: "Wishlist", icon: <MdFavorite />, link: "/wishlist" },
+    { name: "Orders", icon: <FaJediOrder />, link: "/orders" },
     { name: "My Cart", icon: <FaCartShopping />, link: "/cart" },
   ];
 

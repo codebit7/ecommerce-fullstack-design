@@ -2,6 +2,8 @@ import { useState } from "react";
 import './catStyles.css';
 import hero_image from './../../assets/Brand/hero_image.jpg';
 import profile from './../../assets/Form/file/profile.png';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   "Automobiles",
@@ -17,6 +19,9 @@ const categories = [
 
 const CategoryBanner = () => {
   const [activeCategory, setActiveCategory] = useState("Automobiles");
+ const {isAuthenticated} = useSelector((state)=> state.auth)
+const dispatch =  useDispatch();
+ const navigate = useNavigate();
 
   return (
     <div className="category-banner-container container">
@@ -54,7 +59,10 @@ const CategoryBanner = () => {
             <p className="user-text">Hi, user <br /> let's get stated</p>
           </div>
           <button className="join-btn">Join now</button>
-          <button className="login-btn">Log in</button>
+         {
+          isAuthenticated ?<button className="login-btn" onClick={() => dispatch(logout())}>Logout</button>:
+          <button className="login-btn" onClick={() =>navigate('/auth/login') }>Login</button>
+         } 
         </div>
         <div className="offer-card ">Get US $10 off<br /> with a new <br /> supplier</div>
         <div className="quote-card ">Send quotes with <br />supplier <br /> preferences</div>

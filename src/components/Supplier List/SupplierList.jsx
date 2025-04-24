@@ -28,12 +28,12 @@ const suppliers = [
 const SupplierList = () => {
   return (
     <div className="suppliers container">
-      <h2>Suppliers by region</h2>
+      <p className="supplier-header">Suppliers by region</p>
       <div className="suppliers-grid">
         {suppliers.map((supplier, index) => (
           <div key={index} className="supplier-item">
             <img src={supplier.flag} alt="flags" className="flag" />
-            <div className="supplier-info">
+            <div className="user-supplier-info">
               <p className="country">{supplier.country}</p>
               <p className="domain">{supplier.domain}</p>
             </div>

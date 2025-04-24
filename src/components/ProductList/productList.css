@@ -87,6 +87,9 @@
     color: #555;
     margin: 6px 0;
   }
+  .wishlist-icon.filled {
+    color: red;
+  }
   
   .view-details {
     font-size: 14px;

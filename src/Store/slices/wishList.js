@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const BASE_URL = "http://localhost:3000/api/v1";
+const user = JSON.parse(localStorage.getItem("user"));
 
-
-const getWishlistItem = createAsyncThunk(
+export const getWishlistItem = createAsyncThunk(
   "wishlist/getItems",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const token = getState().auth.token;
+      const token = user.token || getState().auth.token;
       const res = await axios.get(`${BASE_URL}/wishlist`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ const getWishlistItem = createAsyncThunk(
 );
 
 
-const addToWishlist = createAsyncThunk(
+export const addToWishlist = createAsyncThunk(
   "wishlist/addItem",
   async (item, { getState, rejectWithValue }) => {
     try {
@@ -48,7 +48,7 @@ const addToWishlist = createAsyncThunk(
 );
 
 
-const removeToWishlist = createAsyncThunk(
+export const removeToWishlist = createAsyncThunk(
   "wishlist/removeItem",
   async (item, { getState, rejectWithValue }) => {
     try {
@@ -72,7 +72,7 @@ const removeToWishlist = createAsyncThunk(
 );
 
 
-const clearWishlist = createAsyncThunk(
+export const clearWishlist = createAsyncThunk(
   "wishlist/clear",
   async (_, { getState, rejectWithValue }) => {
     try {

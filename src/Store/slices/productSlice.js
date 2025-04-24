@@ -3,15 +3,17 @@ import axios from "axios";
 
 export const BASE_URL = "http://localhost:3000/api/v1";
 
-const token ="helel";
+
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async ({ page = 1, limit = 10 }, { rejectWithValue }) => {
+  async ({ page = 1, limit = 10 }, {getState, rejectWithValue }) => {
     console.log("function called");
     
     try {
-      const response = await axios.get(`${BASE_URL}/products?page=${page}&limit=${limit}`, { headers: { Authorization: `Bearer ${token}` } });
+      const token = getState().auth.token;
+      const response = await axios.get(`${BASE_URL}/products?page=${page}&limit=${limit}`,
+         { headers: { Authorization: `Bearer ${token}` } });
 
       return response.data;
     } catch (error) {
@@ -21,10 +23,44 @@ export const fetchProducts = createAsyncThunk(
 );
 
 
+export const createProduct = createAsyncThunk('products/createProduct',
+  async (product, { getState,rejectWithValue }) => {
+    try {
+      const token = getState().auth.token;
+      const response = await axios.post(`${BASE_URL}/create`,
+        product, { headers: { Authorization: `Bearer ${token}` } });
+        return response.data;
+       } catch (error) {
+          return rejectWithValue(error.response?.data?.message || "Failed to create product");
+     }
+   }
+      
+)
+
+
+
+
+export const updateProduct = createAsyncThunk('products/updateProduct',
+  async ({id , product}, { getState, rejectWithValue }) => {
+    try {
+      const token = getState().auth.token;
+      const response = await axios.post(`${BASE_URL}/update/${id}`,
+        product, { headers: { Authorization: `Bearer ${token}` } });
+        return response.data;
+       } catch (error) {
+          return rejectWithValue(error.response?.data?.message || "Failed to create product");
+     }
+   }
+      
+)
+
+
 export const fetchCategories = createAsyncThunk(
   "products/fetchCategories",
-  async (_, { rejectWithValue }) => {
+  async (_, { getState,rejectWithValue }) => {
     try {
+
+      const token = getState().auth.token;
       const response = await axios.get('http://localhost:3000/api/v1/category',
         {
           headers: {

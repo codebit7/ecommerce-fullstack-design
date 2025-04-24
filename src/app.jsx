@@ -14,6 +14,7 @@ import Protect from "./components/Auth/Protect";
 import AdminLayout from "./Admin/Pages/AdminLayout";
 import ViewProducts from "./Admin/Components/ViewProducts";
 import CreateProduct from "./Admin/Components/CreateProduct";
+import WishListPage from "./Pages/WishListPage";
 
 export function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,14 +37,18 @@ export function App() {
             <Route path="filter" element={<FilterPage />} />
             <Route path="product/:id" element={<ProductDetailsPage />} />
             <Route path="cart" element={<CartPage />} />
+            <Route path="wishlist" element={<WishListPage />} />
+            <Route path="orders" element={<div>Orders</div>} />
+            <Route path="profile" element={<div>Profile</div>} />
           </Route>
         </Route>
 
         
         <Route element={<Protect requiredRole="admin" />}>
           <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<Navigate to="/admin/view" />} /> {/* Default Admin Page */}
+            <Route index element={<Navigate to="/admin/view" />} /> 
             <Route path="view" element={<ViewProducts />} />
+            <Route path="create/:id" element={<CreateProduct />} />
             <Route path="create" element={<CreateProduct />} />
           </Route>
         </Route>

@@ -20,7 +20,7 @@ const ViewProducts = () => {
   }, [dispatch]);
 
   const handleEdit = (id) => {
-    navigate(`/admin/edit/${id}`);
+    navigate(`/admin/create/${id}`);
   };
 
   const handleDelete = async (id) => {

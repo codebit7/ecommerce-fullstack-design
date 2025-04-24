@@ -4,6 +4,7 @@ import pic2 from './../../assets/Image/tech/6.png'
 import pic3 from './../../assets/Image/tech/7.png'
 import pic4 from './../../assets/Image/tech/8.png'
 import pic5 from './../../assets/Image/tech/3.png'
+import demoImage  from './../../assets/Form/file/placeholder-image.jpg'
 
 import "./dealsOffer.css"; 
 import { useSelector } from "react-redux";
@@ -16,14 +17,10 @@ const products = [
   { id: 5, name: "Canon cameras", img: pic5, discount: "-25%" },
 ];
 
-import { token } from "../../Pages/ProductDetailsPage";
-
-
-
 const DealsOffer = () => {
 
 
-  // const token = useSelector((state)=> state.auth.token);
+  const token = useSelector((state)=> state.auth.token);
   const [dealsProducts, setDealsProducts] = useState([]);
 
   useEffect(()=>{
@@ -68,9 +65,9 @@ const DealsOffer = () => {
       <div className="deals-items">
         {dealsProducts.map((product) => (
           <div key={product.id} className="deal-item">
-            <img src={product.img  || pic1} alt={product.name} />
+            <img src={product.img  || demoImage} alt={product.name} />
             <p>{product.name}</p>
-            <div className="deals-discount">{((product.discount/product.price)*100).toFixed(2)}%</div>
+            <div className="deals-discount">{Math.round((product.discount / product.price) * 100)}%</div>
           </div>
         ))}
       </div>
